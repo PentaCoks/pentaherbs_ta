@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- title -->
+	<title>Contact</title>
+
+	<!-- Logo Pentaherbs -->
+	<link rel="shortcut icon" type="image/png" href="assets/img/logo1.png">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="assets/css/all.min.css">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="assets/css/owl.carousel.css">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="assets/css/magnific-popup.css">
+	<!-- animate css -->
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+	<!-- main style -->
+	<link rel="stylesheet" href="assets/css/main.css">
+	<!-- responsive -->
+	<link rel="stylesheet" href="assets/css/responsive.css">
+
+</head>
+
+<body>
+
+	<!--PreLoader-->
+	<div class="loader">
+		<div class="loader-inner">
+			<div class="circle"></div>
+		</div>
+	</div>
+	<!--PreLoader Ends-->
+
+	<!-- header -->
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<!-- logo -->
+						<div class="site-logo">
+							<a href="index.php">
+								<img src="assets/img/logo.png" alt="">
+							</a>
+						</div>
+						<!-- logo -->
+
+						<!-- menu start -->
+						<nav class="main-menu">
+							<ul>
+								<li><a href="index.php">Home</a>
+								</li>
+								<li><a href="about.html">About</a></li>
+								<li class="current-list-item"><a href="contact.html">Contact</a></li>
+								<li><a href="news.php">News</a></li>
+								<li><a href="produk.php">Catalogue</a></li>
+								<li>
+									<div class="search-container align-items-center d-flex flex-row">
+										<input type="text" id="search-box" placeholder="Cari artikel...">
+										<i class="fas fa-search px-2"></i>
+										<div id="search-results"></div>
+									</div>
+								</li>
+							</ul>
+						</nav>
+						<div class="mobile-menu"></div>
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->
+
+	<!-- search area -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+    $('#search-box').on('input', function() {
+        const query = $(this).val().toLowerCase();
+        $('#search-results').empty().hide();
+
+        if (query) {
+            $.ajax({
+                url: 'search.php', // PHP script to handle search
+                method: 'GET',
+                data: { keyword: query },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.length > 0) {
+                        response.forEach(result => {
+                            $('#search-results').append(`<div data-url="${result.url}">${result.title}</div>`);
+                        });
+                        $('#search-results').show();
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX Error:', error);
+                }
+            });
+        }
+    });
+
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('.search-container').length) {
+            $('#search-results').hide();
+        }
+    });
+
+    $('#search-results').on('click', 'div', function() {
+        const url = $(this).data('url');
+        window.location.href = url;
+    });
+});
+
+
+	</script>
+	<!-- end search arewa -->
+
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>DAPATKAN DUKUNGAN 24/7</p>
+						<h1>Hubungi Kami</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+	<!-- contact form -->
+	<div class="contact-from-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mb-5 mb-lg-0">
+					<div class="form-title">
+						<h2>Apakah Anda punya pertanyaan?</h2>
+						<p> Jika Anda mempunyai pertanyaan, Anda dapat menyampaikannya pada kotak chat di bawah</p>
+					</div>
+					<div id="form_status">
+					</div>
+					<div class="contact-form">
+						<form id="form" method="POST">
+							<p>
+								<input type="text" placeholder="Nama" name="name" id="name">
+								<input type="email" placeholder="Email" name="email" id="email">
+							</p>
+							<p>
+								<input type="tel" placeholder="Telepon" name="phone" id="phone">
+								<input type="text" placeholder="Subject" name="subject" id="subject">
+							</p>
+							<p><textarea name="message" id="message" cols="30" rows="10"
+									placeholder="Pesan"></textarea></p>
+							<input type="hidden" name="token" value="FsWga4&@f6aw" />
+							<p><input type="submit" value="Submit" id="button"></p>
+						</form>
+
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="contact-form-wrap">
+						<div class="contact-form-box">
+							<h4><i class="fas fa-map"></i> Alamat Toko</h4>
+							<p>Pasar Induk Kramat Jati <br> Kecamatan Kramat Jati <br> Jakarta Timur</p>
+						</div>
+						<div class="contact-form-box">
+							<h4><i class="far fa-clock"></i> Jam Belanja</h4>
+							<p>SENIN - JUMAT: 08.00 - 20.00  <br> SABTU - MINGGU: 10.00 - 16.00  </p>
+						</div>
+						<div class="contact-form-box">
+							<h4><i class="fas fa-address-book"></i>Kontak</h4>
+							<p>Telopan: 085886074151 <br> Email: PentaHerbs@gmail.com</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end contact form -->
+
+	<!-- footer -->
+	<!-- footer -->
+	<div class="footer-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box about-widget">
+						<h2 class="widget-title">Tentang kami</h2>
+						<p>disini kami menjual bumbu dan rempah pilihan yang telah disortir oleh tenaga profesional, oleh karena itu kami selalu menjaga kualitas produk kami agar konsumen dapat menikmati hasil yang maksimal.</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box get-in-touch">
+						<h2 class="widget-title">Kontak Kami</h2>
+						<ul>
+							<li>Pasar Induk Kramat Jati </li>
+							<li>PentaHerbs@gmail.com</li>
+							<li>08423452341235</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box pages">
+						<h2 class="widget-title">Halaman</h2>
+						<ul>
+							<li><a href="index.php">Home</a></li>
+							<li><a href="about.html">About</a></li>
+							<li><a href="contact.php">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box subscribe">
+						<h2 class="widget-title">Subscribe</h2>
+						<p>Subscribe to our mailing list to get the latest updates.</p>
+						<form action="index.php">
+							<input type="email" placeholder="Email">
+							<button type="submit"><i class="fas fa-paper-plane"></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end footer -->
+
+	<!-- copyright -->
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<p>Copyrights &copy; 2021 - Penta Herbs</a>, All Rights Reserved.<br>
+					</p>
+				</div>
+				<div class="col-lg-6 text-right col-md-12">
+					<div class="social-icons">
+						<ul>
+							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end copyright -->
+	<!-- config email js -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+	<script>
+		emailjs.init('jGNDgSIQ0b9_EKNIv')
+
+		const btn = document.getElementById('button');
+
+		document.getElementById('form')
+			.addEventListener('submit', function (event) {
+				event.preventDefault();
+
+				btn.value = 'Sending...';
+
+				const serviceID = 'default_service';
+				const templateID = 'template_l95e181';
+
+				emailjs.sendForm(serviceID, templateID, this)
+					.then(() => {
+						btn.value = 'Send Email';
+						alert('Sent!');
+					}, (err) => {
+						btn.value = 'Send Email';
+						alert(JSON.stringify(err));
+					});
+			});
+	</script>
+	<!--Start of Tawk.to Script-->
+
+	<script type="text/javascript">
+		var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+		(function () {
+			var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+			s1.async = true;
+			s1.src = 'https://embed.tawk.to/66754ac6eaf3bd8d4d12ea66/1i0t2o738';
+			s1.charset = 'UTF-8';
+			s1.setAttribute('crossorigin', '*');
+			s0.parentNode.insertBefore(s1, s0);
+		})();
+	</script>
+	<!--End of Tawk.to Script-->
+	<!-- jquery -->
+	<script src="assets/js/jquery-1.11.3.min.js"></script>
+	<!-- bootstrap -->
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<!-- count down -->
+	<script src="assets/js/jquery.countdown.js"></script>
+	<!-- isotope -->
+	<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+	<!-- waypoints -->
+	<script src="assets/js/waypoints.js"></script>
+	<!-- owl carousel -->
+	<script src="assets/js/owl.carousel.min.js"></script>
+	<!-- magnific popup -->
+	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<!-- mean menu -->
+	<script src="assets/js/jquery.meanmenu.min.js"></script>
+	<!-- sticker js -->
+	<script src="assets/js/sticker.js"></script>
+	<!-- form validation js -->
+	<script src="assets/js/form-validate.js"></script>
+	<!-- main js -->
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
